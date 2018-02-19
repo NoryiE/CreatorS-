@@ -8,7 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 492ed249069dda145a7fec26a41a3450, type: 3}
-  m_Name: Foundaten_item
+  m_Script: {fileID: 11500000, guid: 4faa8326ffe3fe140a2279c3789b0e68, type: 3}
+  m_Name: FoundationObject
   m_EditorClassIdentifier: 
-  GOPrefab: {fileID: 1555813295142526, guid: f73f33d1f3a2f054893173c1d49d2c25, type: 2}
+  OwnerID: 1
+  ClanID: 0
+  CreatorGameObject: {fileID: 1555813295142526, guid: f73f33d1f3a2f054893173c1d49d2c25,
+    type: 2}
+  isFoundation: 1

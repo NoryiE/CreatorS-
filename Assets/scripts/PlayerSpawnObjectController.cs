@@ -4,97 +4,84 @@ using UnityEngine;
 
 public class PlayerSpawnObjectController : MonoBehaviour {
 
-    [SerializeField] Item[] shortcutItemList;
-    [SerializeField] Material placingMaterial;
+    Item[] shortcutItemList;
     short activeSelection = -1;
-    GameObject placingObject;
+
+    Configuration config;
 
 
-	// Use this for initialization
-	void Start () {
 
-	}
+    // Use this for initialization
+    void Start () {
+        shortcutItemList = new Item[10];
+        config = GameObject.Find("Configuration").GetComponent<Configuration>();
+        shortcutItemList[0] = new Placeable(((PlaceableTemplate)config.itemTemplates[0]));
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         switch(Input.inputString)
         {
             case "1":
-                activeSelection = 0;
                 ResetItemConfig();
+                activeSelection = 0;
                 break;
             case "2":
-                activeSelection = 1;
                 ResetItemConfig();
+                activeSelection = 1;
                 break;
             case "3":
-                activeSelection = 2;
                 ResetItemConfig();
+                activeSelection = 2;
                 break;
             case "4":
-                activeSelection = 3;
                 ResetItemConfig();
+                activeSelection = 3;
                 break;
             case "5":
-                activeSelection = 4;
                 ResetItemConfig();
+                activeSelection = 4;
                 break;
             case "6":
-                activeSelection = 5;
                 ResetItemConfig();
+                activeSelection = 5;
                 break;
             case "7":
-                activeSelection = 6;
                 ResetItemConfig();
+                activeSelection = 6;
                 break;
             case "8":
-                activeSelection = 7;
                 ResetItemConfig();
+                activeSelection = 7;
                 break;
             case "9":
-                activeSelection = 8;
                 ResetItemConfig();
+                activeSelection = 8;
                 break;
             case "0":
-                activeSelection = 9;
                 ResetItemConfig();
+                activeSelection = 9;
                 break;
         }
         if (activeSelection>=0 && activeSelection<=9 && shortcutItemList[activeSelection] != null)
         {
-            if (shortcutItemList[activeSelection].GetType() == typeof(PlaceableItem))
+            if(Input.anyKeyDown)
             {
-                Vector3 rayOrigin = new Vector3(0.5f, 0.5f); // center of the screen
-                float rayLength = 150f;
-
-                // actual Ray
-                Ray ray = Camera.main.ViewportPointToRay(rayOrigin);
-
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, rayLength, 1 << 9))
-                {
-                    if (placingObject == null)
-                    {
-                        placingObject = Instantiate(((PlaceableItem)shortcutItemList[activeSelection]).GOPrefab);
-                        placingObject.GetComponent<MeshRenderer>().material = placingMaterial;
-                        placingObject.GetComponent<Collider>().enabled = false;
-                    }
-                    placingObject.transform.position = hit.point;
-
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        ((PlaceableItem)shortcutItemList[activeSelection]).SpawnObject(hit.point);
-                    }
-                }
+                shortcutItemList[activeSelection].InputKeyPressed();
             }
+            shortcutItemList[activeSelection].ActiveEvent();
         }
 	}
+
+
 
     void ResetItemConfig()
     {
         if (activeSelection >= 0 && activeSelection <= 9)
         {
-            Destroy(placingObject);
+            if(shortcutItemList[activeSelection]!=null)
+                shortcutItemList[activeSelection].InactiveEvent();
         }
     }
 
