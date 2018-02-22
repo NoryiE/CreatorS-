@@ -2,13 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CreatorsObject", menuName = "Game/CreatorsObject")]
-public class CreatorsObject : ScriptableObject {
+public class CreatorsObject {
 
-    [HideInInspector] public int OwnerID;
-    [HideInInspector] public int ClanID;
+    CreatorsObjectTemplate template;
+    GameObject obj;
+    Vector3 worldPos;
+    Vector3 basePos;
 
-    public GameObject CreatorGameObject;
-    public bool isFoundation = false;
 
+    public CreatorsObject(CreatorsObjectTemplate template, Vector3 position, PlayerController player)
+    {
+        this.template = template;
+        obj = Object.Instantiate(template.CreatorGameObject);
+        obj.transform.position = position;
+        obj.tag = "Building";
+        obj.layer = 9;
+    }
+
+    public void Remove()
+    {
+        Object.Destroy(obj);
+    }
 }

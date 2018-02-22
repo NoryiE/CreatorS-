@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlaceableTemplate : ItemTemplate
 {
 
-    public CreatorsObject CreatorObject;
+    public CreatorsObjectTemplate CreatorObjectTemplate;
     public int blockWidth;
     public int blockLength;
     public int blockHeight;

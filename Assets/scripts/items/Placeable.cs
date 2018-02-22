@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Placeable : Item {
 
-    [HideInInspector] public PlayerBase playerBase;
-    CreatorsObject CreatorObject;
+    [HideInInspector] public BaseController playerBase;
+    CreatorsObjectTemplate objectTemplate;
     PlaceableTemplate itemTemplate;
 
     GameObject placingObject;
@@ -15,18 +15,9 @@ public class Placeable : Item {
         this.itemTemplate = itemTemplate;
     }
 
-    void SpawnObject(Vector3 position)
+    public override void WhileHoldingItem(PlayerController player)
     {
-        GameObject obj = MonoBehaviour.Instantiate(itemTemplate.CreatorObject.CreatorGameObject);
-        obj.transform.position = position;
-        obj.tag = "Building";
-        obj.layer = 9;
-
-    }
-
-    public override void ActiveEvent()
-    {
-        base.ActiveEvent();
+        base.WhileHoldingItem(player);
         Vector3 rayOrigin = new Vector3(0.5f, 0.5f); // center of the screen
         float rayLength = 150f;
 
@@ -40,8 +31,8 @@ public class Placeable : Item {
             {
                 if (placingObject == null) // NEW BASE
                 {
-                    placingObject = MonoBehaviour.Instantiate(itemTemplate.CreatorObject.CreatorGameObject);
-                    placingObject.GetComponent<MeshRenderer>().material = GameObject.Find("Configuration").GetComponent<Configuration>().greenPlacingMaterial;
+                    placingObject = Object.Instantiate(itemTemplate.CreatorObjectTemplate.CreatorGameObject);
+                    placingObject.GetComponent<MeshRenderer>().material = Game.Controller.greenPlacingMaterial;
                     placingObject.GetComponent<Collider>().enabled = false;
                 }
                 placingObject.transform.position = hit.point;
@@ -53,18 +44,18 @@ public class Placeable : Item {
         }
     }
 
-    public override void InactiveEvent()
+    public override void OnStopHoldingItem(PlayerController player)
     {
-        base.InactiveEvent();
+        base.OnStopHoldingItem(player);
         MonoBehaviour.Destroy(placingObject);
     }
 
-    public override void InputKeyPressed()
+    public override void OnKeyPressed(PlayerController player)
     {
-        base.InputKeyPressed();
+        base.OnKeyPressed(player);
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            SpawnObject(placingObject.transform.position);
+            CreatorsObject creatorsObject = new CreatorsObject(itemTemplate.CreatorObjectTemplate, placingObject.transform.position, player);
         }
     }
 }

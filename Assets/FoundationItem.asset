@@ -15,7 +15,8 @@ MonoBehaviour:
   weight: 123123
   weightAutoCalculator: 1
   maxStackSize: 100
-  CreatorObject: {fileID: 11400000, guid: a38c0cf3f97ee20498014d2d9b6049bb, type: 2}
+  CreatorObjectTemplate: {fileID: 11400000, guid: a38c0cf3f97ee20498014d2d9b6049bb,
+    type: 2}
   blockWidth: 1
   blockLength: 1
   blockHeight: 1

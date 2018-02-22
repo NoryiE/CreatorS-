@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Item {
+    
 
-    public virtual void ActiveEvent()
+    public virtual void WhileHoldingItem(PlayerController player)
     {
 
     }
 
-    public virtual void InactiveEvent()
+    public virtual void OnStopHoldingItem(PlayerController player)
     {
 
     }
 
-    public virtual void InputKeyPressed()
+    public virtual void OnKeyPressed(PlayerController player) 
     {
-
+        
     }
 }
