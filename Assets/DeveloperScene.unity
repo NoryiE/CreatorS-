@@ -826,7 +826,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 436056853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -846,9 +846,12 @@ MonoBehaviour:
   greenPlacingMaterial: {fileID: 2100000, guid: 25f26731d24a96c44838e48fd0f2e1a6,
     type: 2}
   redPlacingMaterial: {fileID: 0}
+  BaseControllerPrefab: {fileID: 1021093385520530, guid: 3eba29e780864214ca0083bffbf44cb6,
+    type: 2}
   itemTemplates:
   - {fileID: 11400000, guid: 3f08439191df9ae49bafb3c34bfb9e83, type: 2}
-  bases: []
+  baseController: []
+  playerController: []
 --- !u!1 &480515088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,11 +2844,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57c14633d972aa4f8dc7c87254fa9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  PlayerIdentification: 1
-  isInClan: 0
-  Weight: 75
-  ClanIdentification: 0
 --- !u!4 &1548832288 stripped
 Transform:
   m_PrefabParentObject: {fileID: 414352, guid: 1f8dfc02bc7e3e444bd8ff7f039199b6, type: 2}

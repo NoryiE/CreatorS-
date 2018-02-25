@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Placeable", menuName = "Game/Placeable")]
 public class PlaceableTemplate : ItemTemplate
 {
+    //CLIENTSIDE + SERVERSIDE
 
     public CreatorsObjectTemplate CreatorObjectTemplate;
     public int blockWidth;

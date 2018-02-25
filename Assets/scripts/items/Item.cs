@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Item {
-    
+    //CLIENTSIDE + SERVERSIDE
 
     public virtual void WhileHoldingItem(PlayerController player)
     {

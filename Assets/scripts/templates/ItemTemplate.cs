@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemTemplate : ScriptableObject
 {
+    //CLIENTSIDE + SERVERSIDE
 
     public string itemName;
     public int weight;

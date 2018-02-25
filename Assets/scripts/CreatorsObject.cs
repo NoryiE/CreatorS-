@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreatorsObject {
+public class CreatorsObject : MonoBehaviour {
+    //CLIENTSIDE
 
-    CreatorsObjectTemplate template;
-    GameObject obj;
-    Vector3 worldPos;
+    [HideInInspector]public CreatorsObjectTemplate template;
     Vector3 basePos;
 
-
-    public CreatorsObject(CreatorsObjectTemplate template, Vector3 position, PlayerController player)
+    void Start()
     {
-        this.template = template;
-        obj = Object.Instantiate(template.CreatorGameObject);
-        obj.transform.position = position;
-        obj.tag = "Building";
-        obj.layer = 9;
+
+    }
+
+    void Update()
+    {
+
     }
 
     public void Remove()
     {
-        Object.Destroy(obj);
+        Destroy(this);
+    }
+
+    public void UpdateInformation(Vector3 basePos)
+    {
+        this.basePos = basePos;
     }
 }
